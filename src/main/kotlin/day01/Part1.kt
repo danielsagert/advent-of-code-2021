@@ -1,6 +1,6 @@
 package day01
 
-import common.FileReader
+import FileReader
 
 object Part1 {
     fun result(input: String): Int {

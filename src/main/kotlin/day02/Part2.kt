@@ -1,6 +1,6 @@
 package day02
 
-import common.FileReader
+import FileReader
 
 object Part2 {
     data class Position(val horizontal: Int, val depth: Int, val aim: Int)
