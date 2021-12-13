@@ -1,9 +1,9 @@
 package day02
 
-import FileReader
+import Puzzle
 
-object Part1 {
-    fun result(input: String): Int {
+object Day02Part1 : Puzzle {
+    override fun result(input: String): Int {
         val commandSums = input.lineSequence()
             .filterNot(String::isNullOrEmpty)
             .map { it.split(" ") }
@@ -15,9 +15,4 @@ object Part1 {
             .minus(commandSums.getOrDefault("up", 0))
         return horizontal.times(depth)
     }
-}
-
-fun main() {
-    val input = FileReader.content("/day02/input.txt")
-    println(Part1.result(input))
 }

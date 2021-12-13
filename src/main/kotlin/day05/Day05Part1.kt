@@ -1,11 +1,11 @@
 package day05
 
-import FileReader
+import Puzzle
 
-object Part1 {
+object Day05Part1 : Puzzle {
     data class Position(val x: Int, val y: Int)
 
-    fun result(input: String): Int {
+    override fun result(input: String): Int {
         val lines = input.lines()
             .filter(String::isNotBlank)
             .map(::toPositionPair)
@@ -45,9 +45,4 @@ object Part1 {
 
     private fun isVerticalOrHorizontal(line: Pair<Position, Position>) =
         line.first.x == line.second.x || line.first.y == line.second.y
-}
-
-fun main() {
-    val input = FileReader.content("/day05/input.txt")
-    println(Part1.result(input))
 }

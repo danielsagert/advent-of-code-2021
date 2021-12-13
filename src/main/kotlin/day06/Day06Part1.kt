@@ -1,9 +1,9 @@
 package day06
 
-import FileReader
+import Puzzle
 
-object Part1 {
-    fun result(input: String): Int {
+object Day06Part1 : Puzzle {
+    override fun result(input: String): Int {
         var counts = input.split(',').map(String::toInt)
         IntRange(1, 80).forEach { counts = addOneDay(counts) }
         return counts.size
@@ -19,9 +19,4 @@ object Part1 {
         }.unzip()
         return old + new.filterNotNull()
     }
-}
-
-fun main() {
-    val input = FileReader.content("/day06/input.txt")
-    println(Part1.result(input))
 }

@@ -1,9 +1,9 @@
 package day03
 
-import FileReader
+import Puzzle
 
-object Part2 {
-    fun result(input: String): Int {
+object Day03Part2 : Puzzle {
+    override fun result(input: String): Int {
         val lines = input.lines().filterNot(String::isNullOrEmpty)
         val oxygenGeneratorRating = filterByMostCommon(lines, 0).toInt(2)
         val co2ScrubberRating = filterByLessCommon(lines, 0).toInt(2)
@@ -41,9 +41,4 @@ object Part2 {
         val sum = lines.sumOf { it.toCharArray()[index].toString().toInt() }
         return if (sum >= halfItemCount) 0 else 1
     }
-}
-
-fun main() {
-    val input = FileReader.content("/day03/input.txt")
-    println(Part2.result(input))
 }

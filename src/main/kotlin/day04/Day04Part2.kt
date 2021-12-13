@@ -1,29 +1,36 @@
 package day04
 
+import Puzzle
 
-object Part1 {
-    fun result(input: String): Int {
+object Day04Part2 : Puzzle {
+    override fun result(input: String): Int {
         val lines = input.lines().filter { it.isNotBlank() }
         val numbers = extractNumbers(lines)
         val boards = extractBoards(lines)
         val combosOfAllBoards = combos(boards)
+        val finalizedBoards = mutableListOf<Int>()
+        var finalizingNumbers = emptyList<Int>()
 
-        for (i in 5..numbers.size) {
+        for (i in 5..numbers.size + 1) {
             val activeNumbers = numbers.subList(0, i - 1)
 
             for ((boardIndex, comboOfSingleBoard) in combosOfAllBoards.withIndex()) {
+                if (finalizedBoards.contains(boardIndex)) continue
+
                 for (combo in comboOfSingleBoard) {
                     if (activeNumbers.containsAll(combo)) {
-                        val board = boards[boardIndex]
-                        val unmarkedSum = sumOfUnmarked(board, activeNumbers)
-                        val lastNumber = activeNumbers.last()
-                        return unmarkedSum * lastNumber
+                        finalizedBoards.add(boardIndex)
+                        finalizingNumbers = activeNumbers
+                        break
                     }
                 }
             }
         }
 
-        return 0
+        val lastBoard = boards[finalizedBoards.last()]
+        val unmarkedSum = sumOfUnmarked(lastBoard, finalizingNumbers)
+        val lastNumber = finalizingNumbers.last()
+        return unmarkedSum * lastNumber
     }
 
     private fun extractNumbers(lines: List<String>) = lines[0]
@@ -52,9 +59,4 @@ object Part1 {
 
     private fun sumOfUnmarked(board: List<List<Int>>, activeNumbers: List<Int>) =
         board.flatten().filterNot(activeNumbers::contains).sum()
-}
-
-fun main() {
-    val input = FileReader.content("/day04/input.txt")
-    println(Part1.result(input))
 }

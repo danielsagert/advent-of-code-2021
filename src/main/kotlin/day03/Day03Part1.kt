@@ -1,9 +1,9 @@
 package day03
 
-import FileReader
+import Puzzle
 
-object Part1 {
-    fun result(input: String): Int {
+object Day03Part1 : Puzzle {
+    override fun result(input: String): Int {
         val lines = input.lines().filterNot(String::isNullOrEmpty)
         val halfItemCount = lines.size / 2
         val valueLength = lines.first().length
@@ -20,9 +20,4 @@ object Part1 {
         val epsilonRate = gammaRate.xor("1".repeat(valueLength).toInt(2))
         return gammaRate * epsilonRate
     }
-}
-
-fun main() {
-    val input = FileReader.content("/day03/input.txt")
-    println(Part1.result(input))
 }

@@ -1,11 +1,11 @@
 package day02
 
-import FileReader
+import Puzzle
 
-object Part2 {
+object Day02Part2 : Puzzle {
     data class Position(val horizontal: Int, val depth: Int, val aim: Int)
 
-    fun result(input: String): Int {
+    override fun result(input: String): Int {
         val position = input.lineSequence()
             .filterNot(String::isNullOrEmpty)
             .map { it.split(" ") }
@@ -22,9 +22,4 @@ object Part2 {
             }
         return position.horizontal * position.depth
     }
-}
-
-fun main() {
-    val input = FileReader.content("/day02/input.txt")
-    println(Part2.result(input))
 }
