@@ -1,3 +1,3 @@
 interface Puzzle {
-    fun result(input: String): Int
+    fun result(input: String): String
 }

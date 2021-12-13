@@ -3,11 +3,11 @@ package day03
 import Puzzle
 
 object Day03Part2 : Puzzle {
-    override fun result(input: String): Int {
+    override fun result(input: String): String {
         val lines = input.lines().filterNot(String::isNullOrEmpty)
         val oxygenGeneratorRating = filterByMostCommon(lines, 0).toInt(2)
         val co2ScrubberRating = filterByLessCommon(lines, 0).toInt(2)
-        return oxygenGeneratorRating * co2ScrubberRating
+        return (oxygenGeneratorRating * co2ScrubberRating).toString()
     }
 
     private fun filterByMostCommon(lines: List<String>, index: Int): String {

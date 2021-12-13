@@ -3,7 +3,7 @@ package day02
 import Puzzle
 
 object Day02Part1 : Puzzle {
-    override fun result(input: String): Int {
+    override fun result(input: String): String {
         val commandSums = input.lineSequence()
             .filterNot(String::isNullOrEmpty)
             .map { it.split(" ") }
@@ -13,6 +13,6 @@ object Day02Part1 : Puzzle {
         val horizontal = commandSums.getOrDefault("forward", 0)
         val depth = commandSums.getOrDefault("down", 0)
             .minus(commandSums.getOrDefault("up", 0))
-        return horizontal.times(depth)
+        return horizontal.times(depth).toString()
     }
 }

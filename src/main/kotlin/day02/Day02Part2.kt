@@ -5,7 +5,7 @@ import Puzzle
 object Day02Part2 : Puzzle {
     data class Position(val horizontal: Int, val depth: Int, val aim: Int)
 
-    override fun result(input: String): Int {
+    override fun result(input: String): String {
         val position = input.lineSequence()
             .filterNot(String::isNullOrEmpty)
             .map { it.split(" ") }
@@ -20,6 +20,6 @@ object Day02Part2 : Puzzle {
                     else -> position
                 }
             }
-        return position.horizontal * position.depth
+        return (position.horizontal * position.depth).toString()
     }
 }

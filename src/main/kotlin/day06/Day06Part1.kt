@@ -3,10 +3,10 @@ package day06
 import Puzzle
 
 object Day06Part1 : Puzzle {
-    override fun result(input: String): Int {
+    override fun result(input: String): String {
         var counts = input.split(',').map(String::toInt)
         IntRange(1, 80).forEach { counts = addOneDay(counts) }
-        return counts.size
+        return counts.size.toString()
     }
 
     private fun addOneDay(counts: List<Int>): List<Int> {

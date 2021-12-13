@@ -3,7 +3,7 @@ package day03
 import Puzzle
 
 object Day03Part1 : Puzzle {
-    override fun result(input: String): Int {
+    override fun result(input: String): String {
         val lines = input.lines().filterNot(String::isNullOrEmpty)
         val halfItemCount = lines.size / 2
         val valueLength = lines.first().length
@@ -18,6 +18,6 @@ object Day03Part1 : Puzzle {
             .joinToString(separator = "")
             .toInt(2)
         val epsilonRate = gammaRate.xor("1".repeat(valueLength).toInt(2))
-        return gammaRate * epsilonRate
+        return (gammaRate * epsilonRate).toString()
     }
 }

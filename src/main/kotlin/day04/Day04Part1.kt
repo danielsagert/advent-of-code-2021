@@ -4,7 +4,7 @@ import Puzzle
 
 
 object Day04Part1 : Puzzle {
-    override fun result(input: String): Int {
+    override fun result(input: String): String {
         val lines = input.lines().filter { it.isNotBlank() }
         val numbers = extractNumbers(lines)
         val boards = extractBoards(lines)
@@ -19,13 +19,13 @@ object Day04Part1 : Puzzle {
                         val board = boards[boardIndex]
                         val unmarkedSum = sumOfUnmarked(board, activeNumbers)
                         val lastNumber = activeNumbers.last()
-                        return unmarkedSum * lastNumber
+                        return (unmarkedSum * lastNumber).toString()
                     }
                 }
             }
         }
 
-        return 0
+        return 0.toString()
     }
 
     private fun extractNumbers(lines: List<String>) = lines[0]

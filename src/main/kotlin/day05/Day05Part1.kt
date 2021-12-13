@@ -5,7 +5,7 @@ import Puzzle
 object Day05Part1 : Puzzle {
     data class Position(val x: Int, val y: Int)
 
-    override fun result(input: String): Int {
+    override fun result(input: String): String {
         val lines = input.lines()
             .filter(String::isNotBlank)
             .map(::toPositionPair)
@@ -28,7 +28,7 @@ object Day05Part1 : Puzzle {
             }
         }
 
-        return diagram.flatMap { it.asIterable() }.count { it > 1 }
+        return diagram.flatMap { it.asIterable() }.count { it > 1 }.toString()
     }
 
     private fun toPositionPair(line: String): Pair<Position, Position> {

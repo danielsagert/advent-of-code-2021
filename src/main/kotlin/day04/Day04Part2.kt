@@ -3,7 +3,7 @@ package day04
 import Puzzle
 
 object Day04Part2 : Puzzle {
-    override fun result(input: String): Int {
+    override fun result(input: String): String {
         val lines = input.lines().filter { it.isNotBlank() }
         val numbers = extractNumbers(lines)
         val boards = extractBoards(lines)
@@ -30,7 +30,7 @@ object Day04Part2 : Puzzle {
         val lastBoard = boards[finalizedBoards.last()]
         val unmarkedSum = sumOfUnmarked(lastBoard, finalizingNumbers)
         val lastNumber = finalizingNumbers.last()
-        return unmarkedSum * lastNumber
+        return (unmarkedSum * lastNumber).toString()
     }
 
     private fun extractNumbers(lines: List<String>) = lines[0]
